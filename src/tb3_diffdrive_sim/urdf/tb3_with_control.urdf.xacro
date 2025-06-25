@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<robot name="turtlebot3" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Include full official URDF -->
+  <xacro:include filename="$(find turtlebot3_description)/urdf/turtlebot3_burger.urdf"/>
+
+  <ros2_control name="TurtleBot3System" type="system">
+    <hardware>
+        <plugin>fake_components/GenericSystem</plugin>
+        <param name="state_interfaces">["velocity"]</param>
+        <param name="command_interfaces">["velocity"]</param>
+    </hardware>
+    <joint name="left_wheel_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="right_wheel_joint">
+      <command_interface name="velocity"/>
+      <state_interface name="velocity"/>
+    </joint>
+  </ros2_control>
+
+</robot>
